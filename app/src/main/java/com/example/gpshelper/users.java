@@ -2,15 +2,33 @@ package com.example.gpshelper;
 
 public class users {
 
-    private String firstname, lastname, email, password, id;
+    private String firstname, lastname, email, password, id, circle_id, date;
 
-    public  users(String id, String firstname, String lastname, String email, String password)
+    public  users(String id, String firstname, String lastname, String circle_id, String email, String password, String date)
     {
         this.id = id;
         this.firstname = firstname;
         this.lastname = lastname;
+        this.circle_id = circle_id;
         this.email = email;
         this.password = password;
+        this.date = date;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
+    public String getcircle_id() {
+        return circle_id;
+    }
+
+    public void setcircle_id(String circle_id) {
+        this.circle_id = circle_id;
     }
 
     public String getid() {

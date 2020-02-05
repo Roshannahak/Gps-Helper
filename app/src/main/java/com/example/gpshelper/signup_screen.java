@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.provider.ContactsContract;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
@@ -17,6 +18,11 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
+import java.util.Random;
 
 public class signup_screen extends AppCompatActivity {
 
@@ -55,6 +61,10 @@ public class signup_screen extends AppCompatActivity {
         final String password = ppassword.getText().toString().trim();
         final String userid = firebaseAuth.getCurrentUser().getUid();
 
+        Date date = new Date();
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm", Locale.getDefault());
+        final String strdate = dateFormat.format(date);
+
         if (TextUtils.isEmpty(first_name) || TextUtils.isEmpty(last_name) || TextUtils.isEmpty(email) || TextUtils.isEmpty(password)) {
             Toast.makeText(signup_screen.this, "fill the all field", Toast.LENGTH_SHORT).show();
         } else {
@@ -64,7 +74,7 @@ public class signup_screen extends AppCompatActivity {
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if (task.isSuccessful()) {
 
-                                users info = new users(userid, first_name, last_name, email, password);
+                                users info = new users(userid, first_name, last_name, generatecode(), email, password, strdate);
                                 FirebaseDatabase.getInstance().getReference("users")
                                         .child(userid)
                                         .setValue(info).addOnCompleteListener(new OnCompleteListener<Void>() {
@@ -82,5 +92,12 @@ public class signup_screen extends AppCompatActivity {
                         }
                     });
         }
+    }
+    private String generatecode()
+    {
+        Random r = new Random();
+        int intcode = 100000+r.nextInt(900000);
+        String code = String.valueOf(intcode);
+        return code;
     }
 }
