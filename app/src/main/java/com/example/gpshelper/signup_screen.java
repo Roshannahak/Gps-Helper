@@ -55,48 +55,52 @@ public class signup_screen extends AppCompatActivity {
 
     private void signuplistner() {
 
-        final String first_name = fname.getText().toString().trim();
-        final String last_name = lname.getText().toString().trim();
-        final String email = eemail.getText().toString().trim();
-        final String password = ppassword.getText().toString().trim();
-        final String userid = firebaseAuth.getCurrentUser().getUid();
+        try {
+            final String first_name = fname.getText().toString().trim();
+            final String last_name = lname.getText().toString().trim();
+            final String email = eemail.getText().toString().trim();
+            final String password = ppassword.getText().toString().trim();
 
-        Date date = new Date();
-        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm", Locale.getDefault());
-        final String strdate = dateFormat.format(date);
+            Date date = new Date();
+            SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm", Locale.getDefault());
+            final String strdate = dateFormat.format(date);
 
-        if (TextUtils.isEmpty(first_name) || TextUtils.isEmpty(last_name) || TextUtils.isEmpty(email) || TextUtils.isEmpty(password)) {
-            Toast.makeText(signup_screen.this, "fill the all field", Toast.LENGTH_SHORT).show();
-        } else {
-            firebaseAuth.createUserWithEmailAndPassword(email, password)
-                    .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                        @Override
-                        public void onComplete(@NonNull Task<AuthResult> task) {
-                            if (task.isSuccessful()) {
+            if (TextUtils.isEmpty(first_name) || TextUtils.isEmpty(last_name) || TextUtils.isEmpty(email) || TextUtils.isEmpty(password)) {
+                Toast.makeText(signup_screen.this, "fill the all field", Toast.LENGTH_SHORT).show();
+            } else {
+                firebaseAuth.createUserWithEmailAndPassword(email, password)
+                        .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                            @Override
+                            public void onComplete(@NonNull Task<AuthResult> task) {
+                                if (task.isSuccessful()) {
 
-                                users info = new users(userid, first_name, last_name, generatecode(), email, password, strdate);
-                                FirebaseDatabase.getInstance().getReference("users")
-                                        .child(userid)
-                                        .setValue(info).addOnCompleteListener(new OnCompleteListener<Void>() {
-                                    @Override
-                                    public void onComplete(@NonNull Task<Void> task) {
-                                        Toast.makeText(signup_screen.this, "submit..", Toast.LENGTH_SHORT).show();
-                                        startActivity(new Intent(signup_screen.this, login_screen.class));
-                                    }
-                                });
+                                    String userid = firebaseAuth.getCurrentUser().getUid();
+                                    users info = new users(userid, first_name, last_name, generatecode(), email, password, strdate);
+                                    FirebaseDatabase.getInstance().getReference("users")
+                                            .child(userid)
+                                            .setValue(info).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                        @Override
+                                        public void onComplete(@NonNull Task<Void> task) {
+                                            Toast.makeText(signup_screen.this, "submit..", Toast.LENGTH_SHORT).show();
+                                            startActivity(new Intent(signup_screen.this, login_screen.class));
+                                        }
+                                    });
 
-                            } else {
-                                // If sign in fails, display a message to the user.
-                                Toast.makeText(signup_screen.this, "database response error", Toast.LENGTH_SHORT).show();
+                                } else {
+                                    // If sign in fails, display a message to the user.
+                                    Toast.makeText(signup_screen.this, "database response error", Toast.LENGTH_SHORT).show();
+                                }
                             }
-                        }
-                    });
+                        });
+            }
+        } catch (NullPointerException e) {
+            Toast.makeText(signup_screen.this, "error:" + e, Toast.LENGTH_SHORT).show();
         }
     }
-    private String generatecode()
-    {
+
+    private String generatecode() {
         Random r = new Random();
-        int intcode = 100000+r.nextInt(900000);
+        int intcode = 100000 + r.nextInt(900000);
         String code = String.valueOf(intcode);
         return code;
     }
