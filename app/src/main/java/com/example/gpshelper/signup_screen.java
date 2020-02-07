@@ -82,7 +82,8 @@ public class signup_screen extends AppCompatActivity {
                                         @Override
                                         public void onComplete(@NonNull Task<Void> task) {
                                             Toast.makeText(signup_screen.this, "submit..", Toast.LENGTH_SHORT).show();
-                                            startActivity(new Intent(signup_screen.this, login_screen.class));
+                                            Intent intent = new Intent(signup_screen.this, login_screen.class);
+                                            startActivity(intent);
                                         }
                                     });
 

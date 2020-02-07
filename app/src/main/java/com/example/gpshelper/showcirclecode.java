@@ -23,7 +23,8 @@ public class showcirclecode extends AppCompatActivity {
     TextView showid;
     Button done;
     DatabaseReference databaseReference;
-    FirebaseUser firebaseUser;
+    FirebaseAuth firebaseAuth;
+    FirebaseUser fuser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,26 +34,29 @@ public class showcirclecode extends AppCompatActivity {
         showid = findViewById(R.id.txtcircle_id);
         done = findViewById(R.id.button_done);
 
-        //String currentid = firebaseUser.getUid();
-        databaseReference = FirebaseDatabase.getInstance().getReference("users").child(firebaseUser.getUid());
+        firebaseAuth = FirebaseAuth.getInstance();
+        fuser = FirebaseAuth.getInstance().getCurrentUser();
+        String current = fuser.getUid();
 
-        databaseReference.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                try {
-                    String i = dataSnapshot.child("circle_id").getValue(String.class);
-                    //String str = String.valueOf(i);
-                    showid.setText(i);
-                }catch (NullPointerException e){
-                    Toast.makeText(showcirclecode.this, "error:"+e, Toast.LENGTH_SHORT).show();
+        //if (current != null) {
+
+            databaseReference = FirebaseDatabase.getInstance().getReference("users").child(current);
+            databaseReference.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        String currentcode = dataSnapshot.child("circle_id").getValue(String.class);
+                        showid.setText(currentcode);
                 }
-            }
 
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
 
-            }
-        });
+                }
+            });
+        //}
+        //else{
+            //Toast.makeText(showcirclecode.this, "user id null", Toast.LENGTH_SHORT).show();
+        //}
 
         done.setOnClickListener(new View.OnClickListener() {
             @Override
