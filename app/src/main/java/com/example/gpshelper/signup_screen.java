@@ -75,7 +75,7 @@ public class signup_screen extends AppCompatActivity {
                                 if (task.isSuccessful()) {
 
                                     String userid = firebaseAuth.getCurrentUser().getUid();
-                                    users info = new users(userid, first_name, last_name, generatecode(), email, password, strdate);
+                                    users info = new users(userid, first_name, last_name, generatecode(), email, password, strdate, 0, 0);
                                     FirebaseDatabase.getInstance().getReference("users")
                                             .child(userid)
                                             .setValue(info).addOnCompleteListener(new OnCompleteListener<Void>() {

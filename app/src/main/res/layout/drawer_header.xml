@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="150dp"
+    android:orientation="vertical"
+    android:padding="14dp"
+    android:gravity="bottom"
+    android:background="@color/colorPrimary">
+
+    <TextView
+        android:id="@+id/header_name_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Hello Roshan"
+        android:textSize="20sp"
+        android:textStyle="italic|bold"
+        android:textColor="#ffffff"
+        android:textAllCaps="false"/>
+    <TextView
+        android:id="@+id/header_email_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="roshannahak1122@gmail.com"
+        android:textAllCaps="false"
+        android:textSize="15sp"
+        android:textColor="#ffffff"
+        android:layout_marginBottom="5dp"/>
+
+</LinearLayout>

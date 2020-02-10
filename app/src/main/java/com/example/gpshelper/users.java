@@ -3,8 +3,9 @@ package com.example.gpshelper;
 public class users {
 
     private String firstname, lastname, email, password, id, circle_id, date;
+    private double latitude, longitude;
 
-    public  users(String id, String firstname, String lastname, String circle_id, String email, String password, String date)
+    public  users(String id, String firstname, String lastname, String circle_id, String email, String password, String date, double latitude, double longitude)
     {
         this.id = id;
         this.firstname = firstname;
@@ -13,6 +14,24 @@ public class users {
         this.email = email;
         this.password = password;
         this.date = date;
+        this.latitude = latitude;
+        this.longitude = longitude;
+    }
+
+    public double getLatitude() {
+        return latitude;
+    }
+
+    public void setLatitude(double latitude) {
+        this.latitude = latitude;
+    }
+
+    public double getLongitude() {
+        return longitude;
+    }
+
+    public void setLongitude(double longitude) {
+        this.longitude = longitude;
     }
 
     public String getDate() {

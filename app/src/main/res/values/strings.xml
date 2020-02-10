@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Gps helper</string>
+    <string name="title_activity_maps">Map</string>
 </resources>
