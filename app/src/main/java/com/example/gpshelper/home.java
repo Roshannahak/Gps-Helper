@@ -166,7 +166,7 @@ public class home extends AppCompatActivity implements OnMapReadyCallback, Navig
             public void onGranted() {
                 // Obtain the SupportMapFragment and get notified when the map is ready to be used.
                 SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
-                        .findFragmentById(R.id.map);
+                        .findFragmentById(R.id.fragment_container);
                 mapFragment.getMapAsync(home.this);
                 update_location();
             }
@@ -182,7 +182,8 @@ public class home extends AppCompatActivity implements OnMapReadyCallback, Navig
     public void onBackPressed() {
         if (drawerLayout.isDrawerOpen(GravityCompat.START)){
             drawerLayout.closeDrawer(GravityCompat.START);
-        }else {
+        }
+        else {
             super.onBackPressed();
         }
     }
@@ -200,14 +201,24 @@ public class home extends AppCompatActivity implements OnMapReadyCallback, Navig
     public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
         switch (menuItem.getItemId()){
             case R.id.nev_home:
+                startActivity(new Intent(home.this, home.class));
+                finish();
                 break;
             case R.id.nev_profile:
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                        new profilefagment()).commit();
                 break;
             case R.id.nev_joiningc:
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                        new joincirclefragment()).commit();
                 break;
             case R.id.nev_invite:
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                        new invitecodefragment()).commit();
                 break;
             case R.id.nev_mycircle:
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                        new mycirclefragment()).commit();
                 break;
             case R.id.nev_logout:
 
@@ -218,9 +229,9 @@ public class home extends AppCompatActivity implements OnMapReadyCallback, Navig
                     finish();
                     startActivity(new Intent(home.this, login_screen.class));
                 }
-
                 break;
         }
+        drawerLayout.closeDrawer(GravityCompat.START);
         return true;
     }
 }

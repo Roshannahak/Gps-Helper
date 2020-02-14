@@ -10,6 +10,7 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -28,6 +29,7 @@ public class signup_screen extends AppCompatActivity {
 
     EditText fname, lname, eemail, ppassword;
     Button signupbtn;
+    TextView signtolog;
     DatabaseReference databaseReference;
     FirebaseAuth firebaseAuth;
 
@@ -41,6 +43,7 @@ public class signup_screen extends AppCompatActivity {
         eemail = findViewById(R.id.edittext_signemail);
         ppassword = findViewById(R.id.edittext_signpassword);
         signupbtn = findViewById(R.id.signup_button);
+        signtolog = findViewById(R.id.signtolog_txt);
 
         databaseReference = FirebaseDatabase.getInstance().getReference("users");
         firebaseAuth = FirebaseAuth.getInstance();
@@ -51,6 +54,19 @@ public class signup_screen extends AppCompatActivity {
                 signuplistner();
             }
         });
+
+        signtolog.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                signintologinlistener();
+            }
+        });
+    }
+
+    private void signintologinlistener() {
+
+        startActivity(new Intent(signup_screen.this, login_screen.class));
+        finish();
     }
 
     private void signuplistner() {

@@ -4,54 +4,78 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".showcirclecode"
-    android:padding="16dp">
+    tools:context=".showcirclecode">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:orientation="vertical">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="*your circle code*"
-            android:textStyle="italic"
-            android:textSize="20sp"
-            android:textAllCaps="false"
-            android:textAlignment="center"
-            android:layout_gravity="center"
-            android:textColor="#D86363"/>
-        <TextView
-            android:id="@+id/txtcircle_id"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textStyle="bold"
-            android:text="XXXXXX"
-            android:textSize="30sp"
-            android:layout_gravity="center"
-            android:layout_marginTop="10dp"/>
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_marginStart="100dp"
-            android:layout_marginEnd="100dp"
-            android:text="send"
-            android:textAllCaps="true"
-            android:textSize="20sp"
-            android:layout_marginTop="15dp"/>
-        <Button
-            android:id="@+id/button_done"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_marginStart="100dp"
-            android:layout_marginEnd="100dp"
-            android:text="done"
-            android:textAllCaps="true"
-            android:textSize="20sp"
-            android:layout_marginTop="15dp"/>
+        android:layout_height="300dp"
+        android:background="@color/skyblue">
 
     </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="6dp"
+        android:layout_centerInParent="true">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="15dp"
+            app:cardElevation="5dp"
+            android:layout_margin="14dp">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="14dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Share this invite code with the people you want in your circle:"
+                    android:textStyle="bold"
+                    android:textSize="17sp"
+                    android:textAllCaps="false"
+                    android:textAlignment="center"
+                    android:layout_gravity="center_horizontal" />
+                <TextView
+                    android:id="@+id/txtcircle_id"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textStyle="bold"
+                    android:text="XXXXXX"
+                    android:textColor="@color/skyblue"
+                    android:textSize="30sp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="10dp"/>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+        <Button
+            android:id="@+id/sendbutton"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_below="@id/cardview"
+            android:text="send"
+            android:textColor="#ffffff"
+            android:background="@color/skyblue"
+            android:textAllCaps="true"
+            android:textSize="20sp"
+            android:layout_marginTop="30dp"
+            android:layout_marginStart="100dp"
+            android:layout_marginEnd="100dp"/>
+        <TextView
+            android:id="@+id/button_done"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="done"
+            android:textStyle="bold"
+            android:textAllCaps="true"
+            android:textSize="20sp"
+            android:layout_marginTop="15dp"
+            android:layout_below="@id/sendbutton"
+            android:layout_centerHorizontal="true"/>
+    </RelativeLayout>
 
 </RelativeLayout>

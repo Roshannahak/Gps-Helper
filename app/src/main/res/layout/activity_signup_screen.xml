@@ -4,55 +4,103 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".signup_screen"
-    android:padding="16dp">
+    android:background="@color/skyblue"
+    tools:context=".signup_screen">
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="14dp"
-        android:layout_centerInParent="true">
+        android:layout_height="match_parent"
+        android:background="@drawable/cardbackground"
+        android:layout_marginTop="150dp"
+        android:padding="16dp">
 
-        <EditText
-            android:id="@+id/edittext_firstname"
+        <LinearLayout
+            android:id="@+id/linearlayoutsign"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:textSize="20sp"
-            android:hint="first name"
-            android:inputType="text"/>
-        <EditText
-            android:id="@+id/edittext_lastname"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:textSize="20sp"
-            android:hint="last name"
-            android:inputType="text"
-            android:layout_marginTop="10dp"/>
-        <EditText
-            android:id="@+id/edittext_signemail"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:textSize="20sp"
-            android:hint="email"
-            android:inputType="textEmailAddress"
-            android:layout_marginTop="10dp"/>
-        <EditText
-            android:id="@+id/edittext_signpassword"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:textSize="20sp"
-            android:hint="password"
-            android:inputType="textPassword"
-            android:layout_marginTop="10dp"/>
-        <Button
-            android:id="@+id/signup_button"
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:text="Sign up"
-            android:textSize="20sp"
-            android:layout_marginTop="30dp"/>
+            android:layout_height="wrap_content"
+            android:layout_marginTop="80dp"
+            android:orientation="vertical">
 
-    </LinearLayout>
+            <EditText
+                android:id="@+id/edittext_firstname"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:hint="First name"
+                android:drawableStart="@drawable/ic_user"
+                android:drawablePadding="10dp"
+                android:inputType="text"
+                android:textSize="20sp" />
+
+            <EditText
+                android:id="@+id/edittext_lastname"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="10dp"
+                android:hint="Last name"
+                android:drawableStart="@drawable/ic_user"
+                android:drawablePadding="10dp"
+                android:inputType="text"
+                android:textSize="20sp" />
+
+            <EditText
+                android:id="@+id/edittext_signemail"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="10dp"
+                android:hint="Email"
+                android:drawableStart="@drawable/ic_email"
+                android:drawablePadding="10dp"
+                android:inputType="textEmailAddress"
+                android:textSize="20sp" />
+
+            <EditText
+                android:id="@+id/edittext_signpassword"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="10dp"
+                android:hint="Password"
+                android:drawableStart="@drawable/ic_lock_black_24dp"
+                android:drawablePadding="10dp"
+                android:drawableEnd="@drawable/ic_eye"
+                android:inputType="textPassword"
+                android:textSize="20sp" />
+
+            <Button
+                android:id="@+id/signup_button"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="35dp"
+                android:text="Sign up"
+                android:textStyle="bold"
+                android:background="@drawable/loginbtnbackground"
+                android:textSize="20sp"
+                android:textColor="@color/skyblue"/>
+
+        </LinearLayout>
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:layout_below="@id/linearlayoutsign"
+            android:layout_centerInParent="true">
+
+            <TextView
+                android:id="@+id/txt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Already have an account? "
+                android:textAlignment="center"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/signtolog_txt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@id/txt"
+                android:text="Log in"
+                android:textColor="@color/skyblue"
+                android:textSize="16sp" />
+        </RelativeLayout>
+    </RelativeLayout>
 
 </RelativeLayout>

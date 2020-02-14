@@ -20,8 +20,7 @@ import com.google.firebase.database.ValueEventListener;
 
 public class showcirclecode extends AppCompatActivity {
 
-    TextView showid;
-    Button done;
+    TextView showid, done;
     DatabaseReference databaseReference;
     FirebaseAuth firebaseAuth;
     FirebaseUser fuser;
