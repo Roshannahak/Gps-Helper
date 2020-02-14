@@ -100,7 +100,7 @@ public class home extends AppCompatActivity implements OnMapReadyCallback, Navig
                 String current_name = dataSnapshot.child(current_uid).child("firstname").getValue(String.class);
                 String current_email = dataSnapshot.child(current_uid).child("email").getValue(String.class);
 
-                String s1 = "Hello "+current_name;
+                String s1 = "Hi "+current_name;
                 header_name.setText(s1);
                 header_email.setText(current_email);
             }

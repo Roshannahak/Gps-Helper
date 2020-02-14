@@ -31,8 +31,10 @@
         android:layout_width="250dp"
         android:layout_height="match_parent"
         android:layout_gravity="start"
-        app:itemHorizontalPadding="25dp"
+        app:itemHorizontalPadding="20dp"
+        app:itemIconPadding="20dp"
         app:menu="@menu/drawer_menu"
-        app:headerLayout="@layout/drawer_header"/>
+        app:itemIconTint="@color/skyblue"
+        app:headerLayout="@layout/drawer_header" />
 
 </androidx.drawerlayout.widget.DrawerLayout>

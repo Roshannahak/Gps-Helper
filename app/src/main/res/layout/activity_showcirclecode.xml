@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".showcirclecode">
+    tools:context=".showcirclecode"
+    android:background="@color/saddedwhite">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -57,21 +58,21 @@
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_below="@id/cardview"
-            android:text="send"
+            android:text="Send"
             android:textColor="#ffffff"
-            android:background="@color/skyblue"
-            android:textAllCaps="true"
+            android:background="@drawable/share_button_background"
+            android:textAllCaps="false"
             android:textSize="20sp"
             android:layout_marginTop="30dp"
-            android:layout_marginStart="100dp"
-            android:layout_marginEnd="100dp"/>
+            android:layout_marginStart="110dp"
+            android:layout_marginEnd="110dp"/>
         <TextView
             android:id="@+id/button_done"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="done"
+            android:text="Done"
             android:textStyle="bold"
-            android:textAllCaps="true"
+            android:textAllCaps="false"
             android:textSize="20sp"
             android:layout_marginTop="15dp"
             android:layout_below="@id/sendbutton"

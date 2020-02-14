@@ -4,22 +4,28 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/nev_home"
-            android:title="Home" />
+            android:title="Home"
+            android:icon="@drawable/ic_home_icon"/>
         <item
             android:id="@+id/nev_profile"
-            android:title="Profile"/>
+            android:title="Profile"
+            android:icon="@drawable/ic_user"/>
         <item
             android:id="@+id/nev_joiningc"
-            android:title="Join circle"/>
+            android:title="Join circle"
+            android:icon="@drawable/ic_join_circle"/>
         <item
             android:id="@+id/nev_invite"
-            android:title="Invite code"/>
+            android:title="Invite code"
+            android:icon="@drawable/ic_invitation"/>
         <item
             android:id="@+id/nev_mycircle"
-            android:title="My circle"/>
+            android:title="My circle"
+            android:icon="@drawable/ic_my_circle"/>
         <item
             android:id="@+id/nev_logout"
-            android:title="Logout"/>
+            android:title="Logout"
+            android:icon="@drawable/ic_log_out"/>
     </group>
 
 </menu>
