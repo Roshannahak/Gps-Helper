@@ -126,6 +126,7 @@ public class home extends AppCompatActivity implements OnMapReadyCallback, Navig
                 public void onLocationResult(LocationResult locationResult) {
                     if (locationResult != null)
                     {
+                        mMap.clear();
                         final double lat = locationResult.getLastLocation().getLatitude();
                         final double log = locationResult.getLastLocation().getLongitude();
                         latLng = new LatLng(lat, log);

@@ -1,5 +1,6 @@
 package com.example.gpshelper;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -28,7 +29,7 @@ public class mycirclefragment extends Fragment {
     RecyclerView.Adapter adapter;
     RecyclerView.LayoutManager layoutManager;
     //users cuser;
-    ArrayList<String> namelist;
+    ArrayList<String> namelist, idlist;
 
     DatabaseReference databaseReference, currentreference;
     FirebaseAuth firebaseAuth;
@@ -46,6 +47,7 @@ public class mycirclefragment extends Fragment {
         String useruid = firebaseUser.getUid();
 
         namelist = new ArrayList<>();
+        idlist = new ArrayList<>();
 
         layoutManager = new LinearLayoutManager(getActivity());
         recyclerView.setLayoutManager(layoutManager);
@@ -58,6 +60,7 @@ public class mycirclefragment extends Fragment {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 namelist.clear();
+                idlist.clear();
 
                 if (dataSnapshot.exists())
                 {
@@ -70,7 +73,9 @@ public class mycirclefragment extends Fragment {
                             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                                 //users cuser = dataSnapshot.getValue(users.class);
                                 String fatchname = dataSnapshot.child("firstname").getValue(String.class);
+                                String fatchid = dataSnapshot.child("id").getValue(String.class);
                                 namelist.add(fatchname);
+                                idlist.add(fatchid);
                                 adapter.notifyDataSetChanged();
                             }
 
@@ -89,7 +94,7 @@ public class mycirclefragment extends Fragment {
             }
         });
 
-        adapter = new membersadepter(namelist, getActivity());
+        adapter = new membersadepter(namelist, idlist, getActivity());
         recyclerView.setAdapter(adapter);
         adapter.notifyDataSetChanged();
 
