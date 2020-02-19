@@ -24,6 +24,8 @@ public class showcirclecode extends AppCompatActivity {
     DatabaseReference databaseReference;
     FirebaseAuth firebaseAuth;
     FirebaseUser fuser;
+    Button send;
+    String currentcode;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,18 +34,25 @@ public class showcirclecode extends AppCompatActivity {
 
         showid = findViewById(R.id.txtcircle_id);
         done = findViewById(R.id.button_done);
+        send = findViewById(R.id.sendbutton);
 
         firebaseAuth = FirebaseAuth.getInstance();
         fuser = FirebaseAuth.getInstance().getCurrentUser();
         String current = fuser.getUid();
 
+        send.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                sendbuttonlistener();
+            }
+        });
         //if (current != null) {
 
             databaseReference = FirebaseDatabase.getInstance().getReference("users").child(current);
             databaseReference.addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                        String currentcode = dataSnapshot.child("circle_id").getValue(String.class);
+                        currentcode = dataSnapshot.child("circle_id").getValue(String.class);
                         showid.setText(currentcode);
                 }
 
@@ -65,9 +74,20 @@ public class showcirclecode extends AppCompatActivity {
         });
     }
 
+    private void sendbuttonlistener() {
+        Intent intent = new Intent(Intent.ACTION_SEND);
+        intent.setType("text/plain");
+        String sharebody = "code: "+currentcode;
+        String sharesub = "gps helper invitation code";
+        intent.putExtra(Intent.EXTRA_SUBJECT,sharesub);
+        intent.putExtra(Intent.EXTRA_TEXT,sharebody);
+        startActivity(Intent.createChooser(intent, "sharing code"));
+    }
+
     private void donetohomelistener() {
 
         startActivity(new Intent(showcirclecode.this, home.class));
+        finish();
 
     }
 }

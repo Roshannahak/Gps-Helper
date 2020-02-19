@@ -7,4 +7,5 @@
     <color name="saddedwhite">#EBEBEB</color>
     <color name="white">#ffffff</color>
     <color name="LowOpasityBlack">#80000000</color>
+    <color name="black">#202020</color>
 </resources>

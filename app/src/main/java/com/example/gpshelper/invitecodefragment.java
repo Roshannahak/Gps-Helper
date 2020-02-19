@@ -1,5 +1,6 @@
 package com.example.gpshelper;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -27,6 +28,7 @@ public class invitecodefragment extends Fragment {
     DatabaseReference databaseReference;
     FirebaseAuth firebaseAuth;
     FirebaseUser firebaseUser;
+    String code;
 
     @Nullable
     @Override
@@ -35,6 +37,14 @@ public class invitecodefragment extends Fragment {
 
         codetxt = view.findViewById(R.id.code_textview);
         sharebtn = view.findViewById(R.id.sharebutton);
+
+        sharebtn = view.findViewById(R.id.sharebutton);
+        sharebtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                sharebuttonlistener();
+            }
+        });
 
         firebaseAuth = FirebaseAuth.getInstance();
         firebaseUser = firebaseAuth.getCurrentUser();
@@ -46,12 +56,22 @@ public class invitecodefragment extends Fragment {
         return view;
     }
 
+    private void sharebuttonlistener() {
+        Intent intent = new Intent(Intent.ACTION_SEND);
+        intent.setType("text/plain");
+        String sharebody = "code: "+code;
+        String sharesub = "gps helper invitation code";
+        intent.putExtra(Intent.EXTRA_SUBJECT,sharesub);
+        intent.putExtra(Intent.EXTRA_TEXT,sharebody);
+        startActivity(Intent.createChooser(intent, "sharing code"));
+    }
+
     private void displaycodelistener() {
 
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                String code = dataSnapshot.child("circle_id").getValue(String.class);
+                code = dataSnapshot.child("circle_id").getValue(String.class);
 
                 codetxt.setText(code);
             }

@@ -5,9 +5,10 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.provider.ContactsContract;
 import android.text.TextUtils;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -29,9 +30,11 @@ public class signup_screen extends AppCompatActivity {
 
     EditText fname, lname, eemail, ppassword;
     Button signupbtn;
-    TextView signtolog;
+    TextView signtolog, signanim;
     DatabaseReference databaseReference;
     FirebaseAuth firebaseAuth;
+    ProgressbarLoader loader;
+    Animation animation;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,7 +47,14 @@ public class signup_screen extends AppCompatActivity {
         ppassword = findViewById(R.id.edittext_signpassword);
         signupbtn = findViewById(R.id.signup_button);
         signtolog = findViewById(R.id.signtolog_txt);
+        signanim = findViewById(R.id.faded_signup_text);
 
+        //set animation
+        animation = AnimationUtils.loadAnimation(signup_screen.this, R.anim.fade_anim);
+        animation.setDuration(1000);
+        signanim.setAnimation(animation);
+
+        loader = new ProgressbarLoader(signup_screen.this);
         databaseReference = FirebaseDatabase.getInstance().getReference("users");
         firebaseAuth = FirebaseAuth.getInstance();
 
@@ -71,6 +81,7 @@ public class signup_screen extends AppCompatActivity {
 
     private void signuplistner() {
 
+        loader.showloader();
         try {
             final String first_name = fname.getText().toString().trim();
             final String last_name = lname.getText().toString().trim();
@@ -98,6 +109,7 @@ public class signup_screen extends AppCompatActivity {
                                         @Override
                                         public void onComplete(@NonNull Task<Void> task) {
                                             Toast.makeText(signup_screen.this, "submit..", Toast.LENGTH_SHORT).show();
+                                            loader.dismissloader();
                                             Intent intent = new Intent(signup_screen.this, login_screen.class);
                                             startActivity(intent);
                                         }
@@ -106,6 +118,7 @@ public class signup_screen extends AppCompatActivity {
                                 } else {
                                     // If sign in fails, display a message to the user.
                                     Toast.makeText(signup_screen.this, "database response error", Toast.LENGTH_SHORT).show();
+                                    loader.dismissloader();
                                 }
                             }
                         });

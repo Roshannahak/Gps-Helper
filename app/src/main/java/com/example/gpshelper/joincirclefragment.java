@@ -1,5 +1,6 @@
 package com.example.gpshelper;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -31,6 +32,7 @@ public class joincirclefragment extends Fragment {
     DatabaseReference reference, circlerefernce;
     FirebaseAuth firebaseAuth;
     FirebaseUser firebaseUser;
+    ProgressbarLoader loader;
 
     @Nullable
     @Override
@@ -40,6 +42,7 @@ public class joincirclefragment extends Fragment {
         joinedit = view.findViewById(R.id.join_edittext);
         joinbtn = view.findViewById(R.id.join_button);
 
+        loader = new ProgressbarLoader(getActivity());
         firebaseAuth = FirebaseAuth.getInstance();
         firebaseUser = firebaseAuth.getCurrentUser();
 
@@ -62,6 +65,7 @@ public class joincirclefragment extends Fragment {
     }
 
     private void joinbtnlistener() {
+        loader.showloader();
         String no = joinedit.getText().toString().trim();
         Query query = reference.orderByChild("circle_id").equalTo(no);
 
@@ -88,12 +92,14 @@ public class joincirclefragment extends Fragment {
                                     public void onComplete(@NonNull Task<Void> task) {
                                         if (task.isSuccessful()) {
                                             Toast.makeText(getActivity(), "joined success", Toast.LENGTH_SHORT).show();
+                                            loader.dismissloader();
                                         }
                                     }
                                 });
                     }
                 } else {
                     Toast.makeText(getActivity(), "this code is not available", Toast.LENGTH_SHORT).show();
+                    loader.dismissloader();
                 }
             }
 

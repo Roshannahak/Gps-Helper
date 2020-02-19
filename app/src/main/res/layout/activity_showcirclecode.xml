@@ -46,7 +46,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textStyle="bold"
-                    android:text="XXXXXX"
+                    android:text="@string/hide_code"
                     android:textColor="@color/skyblue"
                     android:textSize="30sp"
                     android:layout_gravity="center"

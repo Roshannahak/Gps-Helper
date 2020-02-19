@@ -2,6 +2,7 @@ package com.example.gpshelper;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.content.ContextCompat;
@@ -11,6 +12,7 @@ import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.Manifest;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -60,6 +62,7 @@ public class home extends AppCompatActivity implements OnMapReadyCallback, Navig
     TextView header_name, header_email;
     DatabaseReference databaseReference;
     String current_uid;
+    AlertDialog.Builder builder;
 
 
     @Override
@@ -185,8 +188,30 @@ public class home extends AppCompatActivity implements OnMapReadyCallback, Navig
             drawerLayout.closeDrawer(GravityCompat.START);
         }
         else {
-            super.onBackPressed();
+            backpressedwarrning();
         }
+        //super.onBackPressed();
+    }
+    public void backpressedwarrning(){
+        builder = new AlertDialog.Builder(home.this);
+        builder.setMessage(R.string.dialog_message).setTitle(R.string.dialog_title);
+        builder.setMessage("Do you want to close this application ?")
+                .setCancelable(false)
+                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        finish();
+                    }
+                })
+                .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.cancel();
+                    }
+                });
+        AlertDialog alert = builder.create();
+        alert.setTitle("Exit");
+        alert.show();
     }
 
     @Override
@@ -208,6 +233,8 @@ public class home extends AppCompatActivity implements OnMapReadyCallback, Navig
             case R.id.nev_profile:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
                         new profilefagment()).commit();
+                /*getSupportActionBar().setTitle("profile");
+                getSupportActionBar().setDisplayHomeAsUpEnabled(true);*/
                 break;
             case R.id.nev_joiningc:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
