@@ -71,7 +71,8 @@ public class login_screen extends AppCompatActivity {
     }
 
     private void txtsignuplistener() {
-        startActivity(new Intent(login_screen.this, signup_screen.class));
+        Intent intent = new Intent(login_screen.this, signup_screen.class);
+        startActivity(intent);
     }
 
     private void loginlistner() {
@@ -80,6 +81,7 @@ public class login_screen extends AppCompatActivity {
         String password = logpass.getText().toString().trim();
         if (TextUtils.isEmpty(email) || TextUtils.isEmpty(password)) {
             Toast.makeText(login_screen.this, "fill all fields", Toast.LENGTH_SHORT).show();
+            loader.dismissloader();
         } else {
             firebaseAuth.signInWithEmailAndPassword(email, password)
                     .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {

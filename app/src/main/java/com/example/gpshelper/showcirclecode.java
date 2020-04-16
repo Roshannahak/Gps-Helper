@@ -77,7 +77,7 @@ public class showcirclecode extends AppCompatActivity {
     private void sendbuttonlistener() {
         Intent intent = new Intent(Intent.ACTION_SEND);
         intent.setType("text/plain");
-        String sharebody = "code: "+currentcode;
+        String sharebody = "circle code: "+currentcode;
         String sharesub = "gps helper invitation code";
         intent.putExtra(Intent.EXTRA_SUBJECT,sharesub);
         intent.putExtra(Intent.EXTRA_TEXT,sharebody);

@@ -14,4 +14,7 @@
     <string name="dialog_message">Do you want to close this application</string>
     <string name="splashintro">"this app will find your family, friends, and mobile phone in real-time. this app is also the perfect gps tracker for kids."</string>
     <string name="hide_code">- - - - - -</string>
+    <string name="first_name">First name</string>
+    <string name="last_name">Last name</string>
+    <string name="profile_email">Email Address</string>
 </resources>

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -11,19 +12,20 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
+        android:layout_marginTop="60dp"
         android:fontFamily="serif"
         android:text="@string/login"
         android:textAlignment="center"
         android:textAllCaps="true"
         android:textColor="@color/white"
         android:textSize="30sp"
-        android:textStyle="bold"
-        android:layout_marginTop="60dp"/>
+        android:textStyle="bold" />
+
     <RelativeLayout
-        android:layout_below="@id/slide_login_text"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="60dp"
+        android:layout_below="@id/slide_login_text"
+        android:layout_marginTop="50dp"
         android:background="@drawable/cardbackground"
         android:padding="16dp">
 
@@ -34,27 +36,40 @@
             android:layout_marginTop="100dp"
             android:orientation="vertical">
 
-            <EditText
-                android:id="@+id/edittext_email"
+            <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:drawableStart="@drawable/ic_email"
-                android:drawablePadding="10dp"
-                android:hint="@string/email"
-                android:inputType="textEmailAddress"
-                android:textSize="20sp" />
+                android:layout_height="wrap_content"
+                app:hintEnabled="false">
 
-            <EditText
-                android:id="@+id/edittext_password"
+                <EditText
+                    android:id="@+id/edittext_email"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:drawableStart="@drawable/ic_email"
+                    android:drawablePadding="10dp"
+                    android:hint="@string/email"
+                    android:inputType="textEmailAddress"
+                    android:textSize="20sp" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_marginTop="15dp"
-                android:drawableStart="@drawable/ic_lock_black_24dp"
-                android:drawableEnd="@drawable/ic_eye"
-                android:drawablePadding="10dp"
-                android:hint="@string/password"
-                android:inputType="textPassword"
-                android:textSize="20sp" />
+                android:layout_height="wrap_content"
+                app:passwordToggleEnabled="true"
+                app:hintEnabled="false"
+                android:layout_marginTop="15dp">
+
+                <EditText
+                    android:id="@+id/edittext_password"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:drawableStart="@drawable/ic_lock_black_24dp"
+                    android:drawableEnd="@drawable/ic_eye"
+                    android:drawablePadding="10dp"
+                    android:hint="@string/password"
+                    android:inputType="textPassword"
+                    android:textSize="20sp" />
+            </com.google.android.material.textfield.TextInputLayout>
 
             <Button
                 android:id="@+id/login_button"

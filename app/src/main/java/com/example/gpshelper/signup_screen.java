@@ -94,6 +94,7 @@ public class signup_screen extends AppCompatActivity {
 
             if (TextUtils.isEmpty(first_name) || TextUtils.isEmpty(last_name) || TextUtils.isEmpty(email) || TextUtils.isEmpty(password)) {
                 Toast.makeText(signup_screen.this, "fill the all field", Toast.LENGTH_SHORT).show();
+                loader.dismissloader();
             } else {
                 firebaseAuth.createUserWithEmailAndPassword(email, password)
                         .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
@@ -102,16 +103,16 @@ public class signup_screen extends AppCompatActivity {
                                 if (task.isSuccessful()) {
 
                                     String userid = firebaseAuth.getCurrentUser().getUid();
-                                    users info = new users(userid, first_name, last_name, generatecode(), email, password, strdate, 0, 0);
+                                    users info = new users(userid, first_name, last_name, generatecode(), email, password, strdate, 0, 0, "null");
                                     FirebaseDatabase.getInstance().getReference("users")
                                             .child(userid)
                                             .setValue(info).addOnCompleteListener(new OnCompleteListener<Void>() {
                                         @Override
                                         public void onComplete(@NonNull Task<Void> task) {
-                                            Toast.makeText(signup_screen.this, "submit..", Toast.LENGTH_SHORT).show();
+                                            Toast.makeText(signup_screen.this, "submited..", Toast.LENGTH_SHORT).show();
                                             loader.dismissloader();
-                                            Intent intent = new Intent(signup_screen.this, login_screen.class);
-                                            startActivity(intent);
+                                            Intent in = new Intent(signup_screen.this, login_screen.class);
+                                            startActivity(in);
                                         }
                                     });
 

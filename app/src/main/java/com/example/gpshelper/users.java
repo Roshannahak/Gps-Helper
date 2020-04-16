@@ -2,10 +2,10 @@ package com.example.gpshelper;
 
 public class users {
 
-    private String firstname, lastname, email, password, id, circle_id, date;
+    private String firstname, lastname, email, password, id, circle_id, date, image_url;
     private double latitude, longitude;
 
-    public  users(String id, String firstname, String lastname, String circle_id, String email, String password, String date, double latitude, double longitude)
+    public  users(String id, String firstname, String lastname, String circle_id, String email, String password, String date, double latitude, double longitude, String image_url)
     {
         this.id = id;
         this.firstname = firstname;
@@ -16,6 +16,15 @@ public class users {
         this.date = date;
         this.latitude = latitude;
         this.longitude = longitude;
+        this.image_url = image_url;
+    }
+
+    public String getImage_url() {
+        return image_url;
+    }
+
+    public void setImage_url(String image_url) {
+        this.image_url = image_url;
     }
 
     public double getLatitude() {
