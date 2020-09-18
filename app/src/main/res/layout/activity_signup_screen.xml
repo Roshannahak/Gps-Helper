@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/skyblue"
-    tools:context=".signup_screen">
+    tools:context=".Activity.signup_screen">
 
     <TextView
         android:id="@+id/faded_signup_text"

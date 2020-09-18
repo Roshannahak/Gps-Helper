@@ -1,4 +1,4 @@
-package com.example.gpshelper;
+package com.example.gpshelper.Activity;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
@@ -20,6 +20,11 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.gpshelper.R;
+import com.example.gpshelper.Fragments.invitecodefragment;
+import com.example.gpshelper.Fragments.joincirclefragment;
+import com.example.gpshelper.Fragments.mycirclefragment;
+import com.example.gpshelper.Fragments.profilefagment;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationCallback;
 import com.google.android.gms.location.LocationRequest;

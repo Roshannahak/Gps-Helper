@@ -1,4 +1,4 @@
-package com.example.gpshelper;
+package com.example.gpshelper.Adapter;
 
 
 import android.content.Context;
@@ -7,17 +7,18 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.gpshelper.Activity.circle_members_map;
+import com.example.gpshelper.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
 import java.util.ArrayList;
 
-class membersadepter extends RecyclerView.Adapter<membersadepter.membersadepterViewHolder> {
+public class membersadepter extends RecyclerView.Adapter<membersadepter.membersadepterViewHolder> {
 
     ArrayList<String> namelist, idlist;
     Context context;
@@ -51,7 +52,7 @@ class membersadepter extends RecyclerView.Adapter<membersadepter.membersadepterV
             @Override
             public void onClick(View v) {
 
-                Intent intent = new Intent(context,circle_members_map.class);
+                Intent intent = new Intent(context, circle_members_map.class);
                 intent.putExtra("joined_uid",strobj1);
                 context.startActivity(intent);
                 //Toast.makeText(context,"response:"+strobj1,Toast.LENGTH_LONG).show();

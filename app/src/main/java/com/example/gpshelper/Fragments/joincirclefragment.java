@@ -1,6 +1,5 @@
-package com.example.gpshelper;
+package com.example.gpshelper.Fragments;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,6 +12,9 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.example.gpshelper.ProgressbarLoader;
+import com.example.gpshelper.R;
+import com.example.gpshelper.Model.circlejoin;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
