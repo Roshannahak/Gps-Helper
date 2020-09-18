@@ -1,4 +1,4 @@
-package com.example.gpshelper;
+package com.example.gpshelper.Activity;
 
 import androidx.annotation.NonNull;
 import androidx.core.content.ContextCompat;
@@ -10,10 +10,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Toast;
 
-import com.google.android.gms.location.FusedLocationProviderClient;
-import com.google.android.gms.location.LocationCallback;
-import com.google.android.gms.location.LocationRequest;
-import com.google.android.gms.location.LocationResult;
+import com.example.gpshelper.R;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;

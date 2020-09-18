@@ -1,4 +1,4 @@
-package com.example.gpshelper;
+package com.example.gpshelper.Model;
 
 public class users {
 
