@@ -236,8 +236,7 @@ public class home extends AppCompatActivity implements OnMapReadyCallback, Navig
                 finish();
                 break;
             case R.id.nev_profile:
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                        new profilefagment()).commit();
+                startActivity(new Intent(home.this, profile.class));
                 /*getSupportActionBar().setTitle("profile");
                 getSupportActionBar().setDisplayHomeAsUpEnabled(true);*/
                 break;

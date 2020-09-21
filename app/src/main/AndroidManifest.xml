@@ -13,7 +13,10 @@
         android:roundIcon="@mipmap/ic_icon_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
+        <activity android:name=".Activity.profile"
+            android:screenOrientation="portrait"
+            android:parentActivityName=".Activity.home"
+            android:theme="@style/SplashAppTheme"/>
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").
@@ -28,12 +31,14 @@
 
         <activity
             android:name=".Activity.circle_members_map"
-            android:label="@string/title_activity_circle_members_map"></activity>
+            android:label="@string/title_activity_circle_members_map" />
         <activity android:name=".Activity.showcirclecode" />
-        <activity android:name=".Activity.home"/>
+        <activity android:name=".Activity.home"
+            android:screenOrientation="portrait" />
         <activity android:name=".Activity.signup_screen" />
         <activity android:name=".Activity.login_screen" />
-        <activity android:name=".Activity.MainActivity"
+        <activity
+            android:name=".Activity.MainActivity"
             android:theme="@style/SplashAppTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
